@@ -1,40 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkadlec <kkadlec@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 03:18:45 by kkadlec           #+#    #+#             */
-/*   Updated: 2021/04/09 15:05:45 by kkadlec          ###   ########.fr       */
+/*   Created: 2021/04/03 14:21:00 by kkadlec           #+#    #+#             */
+/*   Updated: 2021/04/03 14:45:02 by kkadlec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
-void	ft_print(char c)
-{
-	write(1, &c, 1);
-}
+void	ft_ultimate_ft(int *********nbr);
 
-void	ft_putnbr(int nb)
+int		main(void)
 {
-	if (nb == -2147483648)
-	{
-		ft_putnbr(nb / 10);
-		ft_print('8');
-	}
-	if (nb < 0)
-	{
-		ft_print('-');
-		ft_putnbr(-nb);
-	}
-	else
-	{
-		if (nb > 9)
-		{
-			ft_putnbr(nb / 10);
-		}
-		ft_print(48 + nb % 10);
-	}
+	int a;
+	int *ptr1;
+	int **ptr2;
+	int ***ptr3;
+	int ****ptr4;
+	int *****ptr5;
+	int ******ptr6;
+	int *******ptr7;
+	int ********ptr8;
+	int *********ptr9;
+
+	a = 0;
+	ptr1 = &a;	
+	ptr2 = &ptr1;
+	ptr3 = &ptr2;
+	ptr4 = &ptr3;
+	ptr5 = &ptr4;
+	ptr6 = &ptr5;
+	ptr7 = &ptr6;
+	ptr8 = &ptr7;
+	ptr9 = &ptr8;
+	ft_ultimate_ft(ptr9);
+	printf("%d\n", a);
 }

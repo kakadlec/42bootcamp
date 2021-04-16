@@ -1,40 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkadlec <kkadlec@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 03:18:45 by kkadlec           #+#    #+#             */
-/*   Updated: 2021/04/09 15:05:45 by kkadlec          ###   ########.fr       */
+/*   Created: 2021/04/13 02:07:12 by kkadlec           #+#    #+#             */
+/*   Updated: 2021/04/13 15:17:02 by kkadlec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
-void	ft_print(char c)
-{
-	write(1, &c, 1);
-}
+int		ft_is_prime(int nb);
 
-void	ft_putnbr(int nb)
+int		main(void)
 {
-	if (nb == -2147483648)
-	{
-		ft_putnbr(nb / 10);
-		ft_print('8');
-	}
-	if (nb < 0)
-	{
-		ft_print('-');
-		ft_putnbr(-nb);
-	}
-	else
-	{
-		if (nb > 9)
-		{
-			ft_putnbr(nb / 10);
-		}
-		ft_print(48 + nb % 10);
-	}
+	printf("O numero 2 e primo? %d\n", ft_is_prime(2));
+	printf("O numero 3 e primo? %d\n", ft_is_prime(3));
+	printf("O numero 4 e primo? %d\n", ft_is_prime(4));
+	printf("O numero 13 e primo? %d\n", ft_is_prime(13));
+	printf("O numero 31 e primo? %d\n", ft_is_prime(31));
+	printf("O numero 100 e primo? %d\n", ft_is_prime(100));
 }

@@ -1,40 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkadlec <kkadlec@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 03:18:45 by kkadlec           #+#    #+#             */
-/*   Updated: 2021/04/09 15:05:45 by kkadlec          ###   ########.fr       */
+/*   Created: 2021/04/08 18:26:54 by kkadlec           #+#    #+#             */
+/*   Updated: 2021/04/12 22:31:57 by kkadlec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_print(char c)
+int		ft_strlen(char *str)
 {
-	write(1, &c, 1);
-}
+	int count;
 
-void	ft_putnbr(int nb)
-{
-	if (nb == -2147483648)
-	{
-		ft_putnbr(nb / 10);
-		ft_print('8');
-	}
-	if (nb < 0)
-	{
-		ft_print('-');
-		ft_putnbr(-nb);
-	}
-	else
-	{
-		if (nb > 9)
-		{
-			ft_putnbr(nb / 10);
-		}
-		ft_print(48 + nb % 10);
-	}
+	count = 0;
+	while (str[count] != '\0')
+		count++;
+	return (count);
 }

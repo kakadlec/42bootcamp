@@ -1,40 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkadlec <kkadlec@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 03:18:45 by kkadlec           #+#    #+#             */
-/*   Updated: 2021/04/09 15:05:45 by kkadlec          ###   ########.fr       */
+/*   Created: 2021/04/04 12:06:50 by kkadlec           #+#    #+#             */
+/*   Updated: 2021/04/04 17:56:30 by kkadlec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
-void	ft_print(char c)
-{
-	write(1, &c, 1);
-}
+char	*ft_strcpy(char *dest, char *src);
 
-void	ft_putnbr(int nb)
+int		main(void)
 {
-	if (nb == -2147483648)
-	{
-		ft_putnbr(nb / 10);
-		ft_print('8');
-	}
-	if (nb < 0)
-	{
-		ft_print('-');
-		ft_putnbr(-nb);
-	}
-	else
-	{
-		if (nb > 9)
-		{
-			ft_putnbr(nb / 10);
-		}
-		ft_print(48 + nb % 10);
-	}
+	char src[] = "Ola Mundo!";
+	char dest[10];
+
+	ft_strcpy(dest, src);
+	printf("%s\n", dest);
 }

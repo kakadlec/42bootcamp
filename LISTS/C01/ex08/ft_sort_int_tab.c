@@ -1,40 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_sort_int_tab.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkadlec <kkadlec@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 03:18:45 by kkadlec           #+#    #+#             */
-/*   Updated: 2021/04/09 15:05:45 by kkadlec          ###   ########.fr       */
+/*   Created: 2021/04/03 17:49:24 by kkadlec           #+#    #+#             */
+/*   Updated: 2021/04/03 22:17:31 by kkadlec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_print(char c)
+void	ft_sort_int_tab(int *tab, int size)
 {
-	write(1, &c, 1);
-}
+	int count;
+	int count2;
+	int temp;
 
-void	ft_putnbr(int nb)
-{
-	if (nb == -2147483648)
+	count = 0;
+	count2 = size - 1;
+	while (count < size)
 	{
-		ft_putnbr(nb / 10);
-		ft_print('8');
-	}
-	if (nb < 0)
-	{
-		ft_print('-');
-		ft_putnbr(-nb);
-	}
-	else
-	{
-		if (nb > 9)
+		while (count2 >= count)
 		{
-			ft_putnbr(nb / 10);
+			if (tab[count2 - 1] > tab[count2])
+			{
+				temp = tab[count2 - 1];
+				tab[count2 - 1] = tab[count2];
+				tab[count2] = temp;
+			}
+			count2--;
 		}
-		ft_print(48 + nb % 10);
+		count2 = size - 1;
+		count++;
 	}
 }

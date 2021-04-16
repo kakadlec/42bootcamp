@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strupcase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkadlec <kkadlec@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 03:18:45 by kkadlec           #+#    #+#             */
-/*   Updated: 2021/04/09 15:05:45 by kkadlec          ###   ########.fr       */
+/*   Created: 2021/04/04 22:59:02 by kkadlec           #+#    #+#             */
+/*   Updated: 2021/04/05 09:39:09 by kkadlec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdbool.h>
 
-void	ft_print(char c)
+char	*ft_strupcase(char *str)
 {
-	write(1, &c, 1);
-}
+	int		index;
+	char	curr;
 
-void	ft_putnbr(int nb)
-{
-	if (nb == -2147483648)
+	index = 0;
+	while (true)
 	{
-		ft_putnbr(nb / 10);
-		ft_print('8');
-	}
-	if (nb < 0)
-	{
-		ft_print('-');
-		ft_putnbr(-nb);
-	}
-	else
-	{
-		if (nb > 9)
+		curr = str[index];
+		if (curr == '\0')
 		{
-			ft_putnbr(nb / 10);
+			break ;
 		}
-		ft_print(48 + nb % 10);
+		if (curr >= 'a' && curr <= 'z')
+		{
+			str[index] = curr - 32;
+		}
+		index++;
 	}
+	return (str);
 }

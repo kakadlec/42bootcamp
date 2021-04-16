@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkadlec <kkadlec@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 03:18:45 by kkadlec           #+#    #+#             */
-/*   Updated: 2021/04/09 15:05:45 by kkadlec          ###   ########.fr       */
+/*   Created: 2021/04/07 16:24:29 by kkadlec           #+#    #+#             */
+/*   Updated: 2021/04/07 16:49:53 by kkadlec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_print(char c)
+int		ft_find_end(char *str)
 {
-	write(1, &c, 1);
+	int index;
+
+	index = 0;
+	while (str[index] != '\0')
+		index++;
+	return (index);
 }
 
-void	ft_putnbr(int nb)
+char	*ft_strcat(char *dest, char *src)
 {
-	if (nb == -2147483648)
+	int end;
+	int index;
+
+	index = 0;
+	end = ft_find_end(dest);
+	while (src[index] != '\0')
 	{
-		ft_putnbr(nb / 10);
-		ft_print('8');
+		dest[end + index] = src[index];
+		index++;
 	}
-	if (nb < 0)
-	{
-		ft_print('-');
-		ft_putnbr(-nb);
-	}
-	else
-	{
-		if (nb > 9)
-		{
-			ft_putnbr(nb / 10);
-		}
-		ft_print(48 + nb % 10);
-	}
+	dest[end + index] = '\0';
+	return (dest);
 }

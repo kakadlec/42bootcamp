@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkadlec <kkadlec@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 03:18:45 by kkadlec           #+#    #+#             */
-/*   Updated: 2021/04/09 15:05:45 by kkadlec          ###   ########.fr       */
+/*   Created: 2021/04/03 17:49:48 by kkadlec           #+#    #+#             */
+/*   Updated: 2021/04/03 21:37:10 by kkadlec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_print(char c)
+void	ft_rev_int_tab(int *tab, int size)
 {
-	write(1, &c, 1);
-}
+	int count;
+	int count2;
+	int temp[size];
 
-void	ft_putnbr(int nb)
-{
-	if (nb == -2147483648)
+	count = size - 1;
+	count2 = 0;
+	while (count >= 0)
 	{
-		ft_putnbr(nb / 10);
-		ft_print('8');
+		temp[count2] = tab[count];
+		count2++;
+		count--;
 	}
-	if (nb < 0)
+	count = 0;
+	while (count < size)
 	{
-		ft_print('-');
-		ft_putnbr(-nb);
-	}
-	else
-	{
-		if (nb > 9)
-		{
-			ft_putnbr(nb / 10);
-		}
-		ft_print(48 + nb % 10);
+		tab[count] = temp[count];
+		count++;
 	}
 }

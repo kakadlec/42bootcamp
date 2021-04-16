@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_iterative_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkadlec <kkadlec@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 22:39:14 by kkadlec           #+#    #+#             */
-/*   Updated: 2021/04/03 01:41:37 by kkadlec          ###   ########.fr       */
+/*   Created: 2021/04/13 10:58:40 by kkadlec           #+#    #+#             */
+/*   Updated: 2021/04/13 11:44:28 by kkadlec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+int		ft_iterative_power(int nb, int power)
+{
+	int result;
 
-void	rush(int coluna, int linha);
-
-int		main(void)
-{	
-	rush(10,8);
-	return(0);
+	result = 1;
+	if (power == 0 && nb == 0)
+		return (1);
+	if (power < 0)
+		return (0);
+	while (power > 0)
+	{
+		result = result * nb;
+		power--;
+	}
+	return (result);
 }
-

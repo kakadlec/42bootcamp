@@ -1,40 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_print_program_name.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkadlec <kkadlec@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 03:18:45 by kkadlec           #+#    #+#             */
-/*   Updated: 2021/04/09 15:05:45 by kkadlec          ###   ########.fr       */
+/*   Created: 2021/04/13 20:20:03 by kkadlec           #+#    #+#             */
+/*   Updated: 2021/04/13 20:28:54 by kkadlec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_print(char c)
+void	ft_putstr(char *str)
 {
-	write(1, &c, 1);
+	int count;
+
+	count = 0;
+	while (str[count] != '\0')
+	{
+		write(1, &str[count], 1);
+		count++;
+	}
 }
 
-void	ft_putnbr(int nb)
+int		main(int argc, char **argv)
 {
-	if (nb == -2147483648)
-	{
-		ft_putnbr(nb / 10);
-		ft_print('8');
-	}
-	if (nb < 0)
-	{
-		ft_print('-');
-		ft_putnbr(-nb);
-	}
-	else
-	{
-		if (nb > 9)
-		{
-			ft_putnbr(nb / 10);
-		}
-		ft_print(48 + nb % 10);
-	}
+	ft_putstr(argv[argc - 1]);
+	ft_putstr("\n");
+	return (0);
 }

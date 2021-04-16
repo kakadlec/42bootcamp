@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/bin/sh
 # check folders
 echo "====== BEGIN EVAL ======"
 echo "=== My folders are:==="
@@ -10,7 +10,7 @@ export FT_LINE1=7
 export FT_LINE2=15
 
 for pathex in $(ls */{*.sh,*MaRViN*}); do
-        ex=$(echo $pathex | sed 's:\/[a-z]*.*::g')  
+        ex=$(echo $pathex | sed 's:\/[a-z]*.*::g')
 
         echo -e "\n=== My ex. $pathex ==="
         if [ $ex = ex05 ]; then

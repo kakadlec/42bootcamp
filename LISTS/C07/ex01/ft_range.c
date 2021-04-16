@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkadlec <kkadlec@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 03:18:45 by kkadlec           #+#    #+#             */
-/*   Updated: 2021/04/09 15:05:45 by kkadlec          ###   ########.fr       */
+/*   Created: 2021/04/14 19:01:28 by kkadlec           #+#    #+#             */
+/*   Updated: 2021/04/14 19:41:45 by kkadlec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_print(char c)
+int		*ft_range(int min, int max)
 {
-	write(1, &c, 1);
-}
+	int size;
+	int index;
+	int *array;
 
-void	ft_putnbr(int nb)
-{
-	if (nb == -2147483648)
+	index = 0;
+	size = max - min;
+	if (size <= 0)
+		return (0);
+	array = malloc(size * sizeof(int));
+	if (array == NULL)
 	{
-		ft_putnbr(nb / 10);
-		ft_print('8');
-	}
-	if (nb < 0)
-	{
-		ft_print('-');
-		ft_putnbr(-nb);
+		return (0);
 	}
 	else
 	{
-		if (nb > 9)
+		while (index < size)
 		{
-			ft_putnbr(nb / 10);
+			array[index] = min;
+			index++;
+			min++;
 		}
-		ft_print(48 + nb % 10);
+		return (array);
 	}
 }

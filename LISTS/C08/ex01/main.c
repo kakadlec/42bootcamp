@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkadlec <kkadlec@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 03:18:45 by kkadlec           #+#    #+#             */
-/*   Updated: 2021/04/09 15:05:45 by kkadlec          ###   ########.fr       */
+/*   Created: 2021/04/15 00:14:03 by kkadlec           #+#    #+#             */
+/*   Updated: 2021/04/15 00:29:15 by kkadlec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_boolean.h"
 
-void	ft_print(char c)
+void	ft_putstr(char *str)
 {
-	write(1, &c, 1);
+	while (*str)
+	write(1, str++, 1);
 }
 
-void	ft_putnbr(int nb)
+t_bool	ft_is_even(int nbr)
 {
-	if (nb == -2147483648)
-	{
-		ft_putnbr(nb / 10);
-		ft_print('8');
-	}
-	if (nb < 0)
-	{
-		ft_print('-');
-		ft_putnbr(-nb);
-	}
+	return ((EVEN(nbr)) ? TRUE : FALSE);
+}
+
+int		main(int argc, char **argv)
+{
+	(void)argv;
+
+	if (ft_is_even(argc - 1) == TRUE)
+		ft_putstr(EVEN_MSG);
 	else
-	{
-		if (nb > 9)
-		{
-			ft_putnbr(nb / 10);
-		}
-		ft_print(48 + nb % 10);
-	}
+		ft_putstr(ODD_MSG);
+	return (SUCCESS);
 }

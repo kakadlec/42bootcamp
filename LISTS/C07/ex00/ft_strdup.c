@@ -1,40 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkadlec <kkadlec@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 03:18:45 by kkadlec           #+#    #+#             */
-/*   Updated: 2021/04/09 15:05:45 by kkadlec          ###   ########.fr       */
+/*   Created: 2021/04/14 18:06:06 by kkadlec           #+#    #+#             */
+/*   Updated: 2021/04/14 18:59:35 by kkadlec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_print(char c)
+int		ft_strlen(char *str)
 {
-	write(1, &c, 1);
+	int count;
+
+	count = 0;
+	while (str[count] != '\0')
+		count++;
+	return (count);
 }
 
-void	ft_putnbr(int nb)
+char	*ft_strdup(char *src)
 {
-	if (nb == -2147483648)
+	int		size;
+	int		index;
+	char	*dup;
+
+	index = 0;
+	size = ft_strlen(src);
+	dup = malloc(size * sizeof(char) + 1);
+	if (dup == NULL)
 	{
-		ft_putnbr(nb / 10);
-		ft_print('8');
-	}
-	if (nb < 0)
-	{
-		ft_print('-');
-		ft_putnbr(-nb);
+		return (0);
 	}
 	else
 	{
-		if (nb > 9)
+		while (src[index])
 		{
-			ft_putnbr(nb / 10);
+			dup[index] = src[index];
+			index++;
 		}
-		ft_print(48 + nb % 10);
+		dup[index] = '\0';
+		return (dup);
 	}
 }

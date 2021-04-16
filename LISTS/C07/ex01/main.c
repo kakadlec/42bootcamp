@@ -1,40 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkadlec <kkadlec@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 03:18:45 by kkadlec           #+#    #+#             */
-/*   Updated: 2021/04/09 15:05:45 by kkadlec          ###   ########.fr       */
+/*   Created: 2021/04/14 19:00:35 by kkadlec           #+#    #+#             */
+/*   Updated: 2021/04/14 19:41:55 by kkadlec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
+int		*ft_range(int min, int max);
 
-void	ft_print(char c)
+int		main(void)
 {
-	write(1, &c, 1);
-}
+	int min = 10;
+	int max = 50;
+	int *matriz;
 
-void	ft_putnbr(int nb)
-{
-	if (nb == -2147483648)
+	matriz = ft_range(min, max);
+
+	for (int i = 0; i < max - min; i++)
 	{
-		ft_putnbr(nb / 10);
-		ft_print('8');
+		printf("%d ", matriz[i]);
 	}
-	if (nb < 0)
-	{
-		ft_print('-');
-		ft_putnbr(-nb);
-	}
-	else
-	{
-		if (nb > 9)
-		{
-			ft_putnbr(nb / 10);
-		}
-		ft_print(48 + nb % 10);
-	}
+	printf("\n");
 }

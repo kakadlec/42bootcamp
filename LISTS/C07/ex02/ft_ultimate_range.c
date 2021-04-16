@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkadlec <kkadlec@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 03:18:45 by kkadlec           #+#    #+#             */
-/*   Updated: 2021/04/09 15:05:45 by kkadlec          ###   ########.fr       */
+/*   Created: 2021/04/14 19:49:26 by kkadlec           #+#    #+#             */
+/*   Updated: 2021/04/14 20:55:49 by kkadlec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_print(char c)
+int		ft_ultimate_range(int **range, int min, int max)
 {
-	write(1, &c, 1);
-}
+	int bound;
+	int index;
+	int *buffer;
 
-void	ft_putnbr(int nb)
-{
-	if (nb == -2147483648)
+	if (min >= max)
 	{
-		ft_putnbr(nb / 10);
-		ft_print('8');
+		*range = 0;
+		return (0);
 	}
-	if (nb < 0)
+	bound = max - min - 1;
+	buffer = malloc(bound * sizeof(int));
+	if (buffer == NULL)
 	{
-		ft_print('-');
-		ft_putnbr(-nb);
+		*range = 0;
+		return (-1);
 	}
-	else
+	*range = buffer;
+	index = 0;
+	while (index <= bound)
 	{
-		if (nb > 9)
-		{
-			ft_putnbr(nb / 10);
-		}
-		ft_print(48 + nb % 10);
+		buffer[index] = min + index;
+		index++;
 	}
+	return (bound + 1);
 }
